@@ -13,4 +13,3 @@ def check_code():
     else:
         print("False")
 
-
