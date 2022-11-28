@@ -1,0 +1,22 @@
+import matplotlib.pyplot as plt
+import numpy as np
+import psutil
+from concurrent.futures import ThreadPoolExecutor
+
+
+def histogram():
+    for i in range(10):
+        x = np.random.normal(200, 10, 10000)
+        plt.hist(x)
+        plt.show()
+
+
+def cpu():
+    for i in range(20):
+        print(psutil.cpu_percent(interval=1))
+
+
+if __name__ == '__main__':
+    with ThreadPoolExecutor() as exe:
+        exe.submit(cpu)
+        exe.submit(histogram)

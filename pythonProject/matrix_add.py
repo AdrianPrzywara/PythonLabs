@@ -5,7 +5,12 @@ def add(mat1, mat2):
     if mat1.shape != mat2.shape:
         return
     else:
-        print(mat1 + mat2)
+        x, y = mat1.shape
+        result = np.zeros(shape=(x, y))
+        for i in range(x):
+            for j in range(y):
+                result[i, j] = mat1[i, j] + mat2[i, j]
+        print(result)
 
 
 if __name__ == '__main__':

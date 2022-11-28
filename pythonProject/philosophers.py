@@ -1,5 +1,4 @@
 import threading
-import random
 import time
 
 
@@ -22,8 +21,8 @@ class Philosopher(threading.Thread):
         fork1, fork2 = self.leftFork, self.rightFork
         while self.running:
             fork1.acquire()
-            locked = fork2.acquire(False)
-            if locked: 
+            locked = fork2.acquire(Falsedcf)
+            if locked:
                 break
             fork1.release()
             print(f"Philosopher {self.index} can't eat\n")

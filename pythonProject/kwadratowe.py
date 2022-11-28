@@ -9,10 +9,10 @@ def get_roots(a, b, c):
         return x1, x2
     elif delta == 0:
         x = -b / (2 * a)
-        return x, None
+        return x
     else:
-        return None, None
+        return None
 
 
 if __name__ == '__main__':
-    x1, x2 = get_roots(2, 4, 5)
+    print(get_roots(2, 4, 5))
