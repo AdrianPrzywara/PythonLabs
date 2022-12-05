@@ -1,22 +1,28 @@
 import matplotlib.pyplot as plt
 import numpy as np
-import psutil
 from concurrent.futures import ThreadPoolExecutor
+from queue import Queue
+
+q = Queue(maxsize=3)
+x = []
 
 
 def histogram():
-    for i in range(10):
-        x = np.random.normal(200, 10, 10000)
+    while True:
+        x.append(int(q.get()))
         plt.hist(x)
+        plt.xlim([0, 100])
         plt.show()
 
 
-def cpu():
-    for i in range(20):
-        print(psutil.cpu_percent(interval=1))
+def generate():
+    while True:
+        i = np.random.randint(0, 100, 1, int)
+        q.put(i)
 
 
 if __name__ == '__main__':
     with ThreadPoolExecutor() as exe:
-        exe.submit(cpu)
+        exe.submit(generate)
         exe.submit(histogram)
+        
